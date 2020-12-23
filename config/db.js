@@ -9,10 +9,10 @@ const connectDB = async () => {
     });
     console.log("MongoDB Connected");
   } catch (e) {
-      console.log(1)
+    console.log(1);
     console.error(e.message);
     process.exit(1);
   }
 };
 
-module.exports = connectDB; 
+module.exports = connectDB;

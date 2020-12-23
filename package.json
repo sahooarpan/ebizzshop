@@ -7,9 +7,10 @@
     "server": "nodemon server.js",
     "frontend": "npm start --prefix frontend",
     "start": "node server.js",
-    "printPattern":"node printPattern",
+    "printPattern": "node printPattern",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
