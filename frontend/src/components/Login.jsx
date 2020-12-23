@@ -5,7 +5,7 @@ import { login } from "../actions/userActions";
 
 const Login = ({ history }) => {
   const auth = useSelector((state) => state.user);
-  const { userInfo } = auth;
+  const { userInfo,error } = auth;
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,9 @@ const Login = ({ history }) => {
     <div className="d-flex justify-content-center ">
       <form className="form-container bg-light" onSubmit={onSubmit}>
         <h3 className="display-4 text-primary">Login</h3>
-
+       { error?<div className="form-group text-danger">
+    {error}
+</div>:""}  
         <div class="form-group">
           <label for="email">Email address</label>
           <input
