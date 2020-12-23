@@ -6,8 +6,11 @@ import Shop from './components/Shop'
 import { setAuthToken } from "./util/setAuthToken";
 import { userLoad } from "./actions/userActions";
 import Login from './components/Login'
-import PrivateRouter from './components/routing/PrivateRouter'
+import PrivateRoute from './components/routing/PrivateRouter'
 import { useDispatch } from 'react-redux'
+import CreateProduct from './components/CreateProduct'
+import UpdateProduct from './components/UpdateProduct'
+
 const App = () => {
 
   const dispatch = useDispatch();
@@ -32,8 +35,12 @@ const App = () => {
 
       
       <Route path='/register' component={Register} />
-      <PrivateRouter exact path='/shop' component={Shop} />
+      <PrivateRoute exact path='/shop' component={Shop} />
+      <PrivateRoute exact path='/create-product' component={CreateProduct} />
+      <PrivateRoute exact path='/update-product/:id' component={UpdateProduct} />
+      <Route path='/signin' component={Login} />
       <Route path='/' component={Login} />
+      
       </Switch>
     
       </Router>

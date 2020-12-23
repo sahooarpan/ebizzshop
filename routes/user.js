@@ -14,6 +14,7 @@ userRouter.get("/", isAuth, async (req, res) => {
 
 userRouter.post("/signup", async (req, res) => {
   try {
+      
     let user = await User.find({ email: req.body.email });
     if (user.length) {
       res.status(401).json({ message: "Email already exists" });

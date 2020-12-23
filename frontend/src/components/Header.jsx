@@ -13,10 +13,10 @@ const Header = () => {
     const guestLinks=(
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <Link class="nav-link" href="#">Login</Link>
+                <Link to='/signin' class="nav-link" href="#">Login</Link>
             </li>
             <li class="nav-item">
-                <Link class="nav-link" href="#">Register</Link>
+                <Link to='/register' class="nav-link" href="#">Register</Link>
             </li>
         </ul>
     )
@@ -24,13 +24,13 @@ const Header = () => {
     const authLinks=(
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <Link class="nav-link" href="#">Create Product</Link>
+                <Link to='/create-product' class="nav-link">Create Product</Link>
             </li>
             <li class="nav-item">
-                <Link class="nav-link" href="#">{auth?.userInfo?.name}</Link>
+                <Link to='/shop' class="nav-link" href="#">{auth?.userInfo?.name}</Link>
             </li>
             <li class="nav-item">
-                <Link class="nav-link" href="#">Shop</Link>
+                <Link to='/shop' class="nav-link" href="#">Shop</Link>
             </li>
             <li class="nav-item">
                 <Link onClick={handleLogout} class="nav-link" href="#">Logout</Link>
@@ -40,7 +40,7 @@ const Header = () => {
 
 return (
 <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
-    <Link class="navbar-brand" href="#">EShop</Link>
+    <Link to='/' class="navbar-brand">EShop</Link>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -52,3 +52,4 @@ return (
 }
 
 export default Header
+    
