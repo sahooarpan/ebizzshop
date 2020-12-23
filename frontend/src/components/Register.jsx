@@ -126,7 +126,7 @@ const Register = ({ history }) => {
         </button>
         <p className="form-text">
           Have an account ?{" "}
-          <Link className="form-link" to="/signin">
+          <Link className="header-link" to="/signin">
             Please login{" "}
           </Link>
           here.

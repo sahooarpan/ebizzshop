@@ -60,10 +60,10 @@ const Login = ({ history }) => {
         </button>
         <p className="form-text">
           Do not have an account ?{" "}
-          <Link className="form-link" to="/register">
-            Please{" "}
+          <Link className="header-link" to="/register">
+            Please register
           </Link>
-          register
+          
         </p>
       </form>
     </div>
