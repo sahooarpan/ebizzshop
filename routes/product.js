@@ -14,6 +14,18 @@ router.get('/',isAuth,async(req,res)=>{
     }
 })
 
+router.get('/:id',isAuth,async(req,res)=>{
+    try {
+     
+    const product = await Product.findById(req.params.id);
+    res.send(product);   
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+})
+
+
+
 router.post('/',isAuth,async(req,res)=>{
     try {       
         const user = await User.findById(req.user._id?req.user._id:req.user.id).select('-password');
@@ -22,7 +34,7 @@ router.post('/',isAuth,async(req,res)=>{
             name:req.body.name,
             price:req.body.price,
             productImage:req.body.productImage,
-            user:user
+            user:req.user._id
         })
         console.log(newProduct)
         const post = await newProduct.save();
@@ -46,9 +58,9 @@ router.put('/edit/:id',isAuth,async(req,res)=>{
       if(product){
             
         console.log(product) 
-        product= await Product.updateOne({_id:req.params.id},{$set:{name:req.body.name,price:req.body.price,productImage:req.body.productImage}})
-        product = await Product.findById(req.params.id) 
-        res.status(200).send(product)
+        await Product.updateOne({_id:req.params.id},{$set:{name:req.body.name,price:req.body.price,productImage:req.body.productImage}})
+        products = await Product.find({}); 
+        res.status(200).send(products)
               
       }
       

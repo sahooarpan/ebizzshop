@@ -1,15 +1,22 @@
 import React,{useEffect} from 'react'
-import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import { deleteProduct } from '../actions/productActions';
 
-const Product = ({name,price,productImage,createdBy}) => {
+const Product = ({name,price,productImage,createdBy,id}) => {
     const auth = useSelector((state) => state.user);
     const { userInfo } = auth;
+    const dispatch=useDispatch();
     useEffect(() => {
         console.log(userInfo,createdBy);
         return () => {
             
         }
     }, [])    
+
+    const handleDelete=()=>{
+        dispatch(deleteProduct(id))
+    }
     return (
         <div className="card product-card align-self-xs-center mt-4 post-dashboard">
         <img className="card-img-top card-image" src={productImage} alt={name}/>
@@ -20,19 +27,12 @@ const Product = ({name,price,productImage,createdBy}) => {
           <p className="text-secondary mt-2 search-name card-text">
              Price: {price}
           </p>
-         {}  <p className="text-secondary mt-2 search-name card-text">
-             Posted By: {createdBy}
-          </p>
-           {/* <div className="d-flex">           
-          <p className="text-primary mt-2 search-name card-text mr-2">
-          <i class="fa fa-thumbs-up mr-1" aria-hidden="true"></i>{post && post.likes && post.likes.length}
-          
-          </p>
-          <p className="text-success mt-2 search-name card-text">             
-          <i class="fa fa-comments mr-1" aria-hidden="true"></i>{post && post.comments && post.comments.length}
-          </p>
-          </div> */}
-      {userInfo?._id === createdBy?"Yes":"No"}
+         
+         
+      {userInfo?._id === createdBy?<div className="d-flex justify-content-between">
+        <Link className="btn btn-primary" to={`/update-product/${id}`}>Edit</Link>
+        <button className="btn btn-danger" onClick={()=>handleDelete(id)}>Delete</button>
+      </div>:""}
         </div>
       </div>  
       )

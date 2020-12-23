@@ -1,19 +1,38 @@
-import React,{ useState } from 'react'
+import React,{ useState,useEffect } from 'react'
+import { useSelector,useDispatch } from 'react-redux'
+import { updateProduct,getProduct,getProducts } from '../actions/productActions'
+const UpdateProduct = ({match,history}) => {
 
-const UpdateProduct = () => {
-
+    const productState = useSelector(state=>state.product);   
+    const { product,loading } =productState; 
     const [name,setName] = useState('');
     const [price,setPrice] = useState('');
     const [productImage,setProductImage] = useState('');
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        dispatch(getProduct(match.params.id));
+        
+    },[]);
+
+    useEffect(()=>{
+        setName(product.name);
+        setPrice(product.price);
+        setProductImage(product.productImage);  
+    },[product])
+
+    const handleSubmit=e=>{
+        e.preventDefault();
+        dispatch(updateProduct(match.params.id,name,price,productImage));
+        dispatch(getProducts());
+        history.push('/shop')
+    }
     
-
-
     return (
         <div className="d-flex justify-content-center ">
         
-        <form className="form-container bg-light">
+        <form className="form-container bg-light" onSubmit={handleSubmit}>
         
-        <h3 className="display-4 text-primary">Create Product</h3>
+        <h3 className="display-4 text-primary">Update Product</h3>
 
             <div class="form-group">
             <label for="name">Product Name</label>

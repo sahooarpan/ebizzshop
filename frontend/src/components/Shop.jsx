@@ -11,7 +11,7 @@ const Shop = () => {
     const { products,loading } = product;
     useEffect(()=>{
         dispatch(getProducts());
-    },[])
+    },[dispatch])
     return (
         <div className="container mt-5 form-container">
            <h1 className="mb-3">Shop</h1>
@@ -24,6 +24,7 @@ const Shop = () => {
             return(
             <Product key={product?._id} name={product?.name} price={product?.price} productImage={product?.productImage} 
               createdBy={product?.user}
+              id={product?._id}
               />
             )})}
             </div>
