@@ -7,10 +7,11 @@ const Product = ({ name, price, productImage, createdBy, id }) => {
   const auth = useSelector((state) => state.user);
   const { userInfo } = auth;
   const dispatch = useDispatch();
-
+  
   const handleDelete = () => {
     dispatch(deleteProduct(id));
   };
+  //Getting id
   const userId = userInfo?._id?userInfo?._id:userInfo?.id;
   
   return (
