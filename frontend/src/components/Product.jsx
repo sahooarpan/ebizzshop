@@ -11,6 +11,10 @@ const Product = ({ name, price, productImage, createdBy, id }) => {
   const handleDelete = () => {
     dispatch(deleteProduct(id));
   };
+  const userId = userInfo?._id?userInfo?._id:userInfo?.id;
+  console.log("uid",userId)
+  console.log("creby",createdBy)
+  
   return (
     <div className="card product-card align-self-xs-center mt-4 post-dashboard">
       <img className="card-img-top card-image" src={productImage} alt={name} />
@@ -20,7 +24,7 @@ const Product = ({ name, price, productImage, createdBy, id }) => {
           Price: {price}
         </p>
 
-        {userInfo?._id === createdBy ? (
+        {userId === createdBy ? (
           <div className="d-flex justify-content-between">
             <Link className="btn btn-primary" to={`/update-product/${id}`}>
               Edit

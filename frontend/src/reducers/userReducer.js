@@ -45,6 +45,7 @@ export default function user(state = userState, action) {
         loading: false,
         userInfo: action.payload,
         isAuthenticated: true,
+        
       };
     case USER_LOGOUT:
     case USER_LOGIN_FAIL:
