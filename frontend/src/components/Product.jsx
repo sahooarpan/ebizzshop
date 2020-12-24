@@ -12,8 +12,6 @@ const Product = ({ name, price, productImage, createdBy, id }) => {
     dispatch(deleteProduct(id));
   };
   const userId = userInfo?._id?userInfo?._id:userInfo?.id;
-  console.log("uid",userId)
-  console.log("creby",createdBy)
   
   return (
     <div className="card product-card align-self-xs-center mt-4 post-dashboard">
